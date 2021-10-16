@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -13,6 +14,25 @@
 
     <div id="fcf-form">
     <h2 class="fcf-h3" style="text-align: center;">KYC ACCREDITATION</h2>
+
+    <?php
+        if(isset($_SESSION['error'])){
+          echo "
+            <div class='callout callout-danger text-center padding-top-10 padding-bottom-10'>
+              <p>".$_SESSION['error']."</p> 
+            </div>
+          ";
+          unset($_SESSION['error']);
+        }
+        if(isset($_SESSION['success'])){
+          echo "
+            <div class='callout callout-success text-center padding-top-10 padding-bottom-10'>
+              <p>".$_SESSION['success']."</p> 
+            </div>
+          ";
+          unset($_SESSION['success']);
+        }
+    ?>
 
     <form id="fcf-form-id" class="fcf-form-class" method="post" action="kyc-process.php" enctype="multipart/form-data">
         
