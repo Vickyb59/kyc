@@ -25,8 +25,6 @@ if (isset($_POST['username'])) {
     $username = $_POST['username']; // required
     $profession = $_POST['profession']; // required
     $networth = $_POST['networth']; // required
-    $validid = $_FILES['validid']['name'];
-    $bankstatement = $_FILES['bankstatement']['name'];
 
     // if message is empty
     if (
@@ -54,14 +52,6 @@ if (isset($_POST['username'])) {
         problem($error_message);
     }
 
-    if(!empty($validid)){
-        move_uploaded_file($_FILES['validid']['tmp_name'], 'uploads/'.$validid);
-    }
-
-    if(!empty($bankstatement)){
-        move_uploaded_file($_FILES['bankstatement']['tmp_name'], 'uploads/'.$bankstatement);
-    }
-
     $email_message = "KYC Form details below.\n\n";
 
     function clean_string($string)
@@ -74,16 +64,18 @@ if (isset($_POST['username'])) {
     $email_message .= "Username: " . clean_string($username) . "\n";
     $email_message .= "Profession: " . clean_string($profession) . "\n";
     $email_message .= "Net Worth: " . clean_string($networth) . "\n";
-    $email_message .= "Valid ID File:  https://startacap.com/kyc/uploads/".$validid."\n";
-    $email_message .= "Bank Statement File:  https://startacap.com/kyc/uploads/".$bankstatement."\n";
     $email_message .= "Message: " . clean_string($message) . "\n";
 
     // create email headers
     $headers = 'From: starta@startacap.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
     @mail($email_to, $email_subject, $email_message, $headers);
+?>
 
-    $_SESSION['success'] = 'Your KYC request has been submitted successfully ! To continue to navigate site, <a href="www.startacap.com">Click Here</a>';
-    header('location: ' . $_SERVER['HTTP_REFERER']);
+    <!-- include your success message below -->
+
+    Thank you for filling this. We will be in touch with you very soon.
+
+<?php
 }
 ?>

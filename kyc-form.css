@@ -11,7 +11,7 @@
     color: #212529;
     text-align: left;
     background-color: #fff;
-    padding: 30px;
+    padding: 100px;
     padding-bottom: 10px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
@@ -165,4 +165,22 @@ input[type="submit"].fcf-btn-block, input[type="reset"].fcf-btn-block, input[typ
 
 .pl-10{
     padding-left: 10px;
+}
+
+@media (max-width: 600px){
+    .fcf-body {
+        padding: 20px;
+    }
+}
+
+@media (min-width: 600px){
+    .bs-50 {
+        width: 50%;
+    }
+    .flex-bs{
+        display: flex;
+    }
+    .bs-pl-10{
+        padding-left: 10px;
+    }
 }
