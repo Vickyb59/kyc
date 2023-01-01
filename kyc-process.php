@@ -2,7 +2,7 @@
 if (isset($_POST['username'])) {
 
     // SENDTO EMAIL
-    $email_to = "israelcharlse@gmail.com";
+    $email_to = "";
     $email_subject = "New KYC Form Submission";
 
     // validation expected data exists
